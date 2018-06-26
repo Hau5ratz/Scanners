@@ -1,0 +1,62 @@
+CREATE TABLE active_jobs(
+    ID varchar(45) NOT NULL,
+    URL varchar(100) NOT NULL,
+    last_update int NOT NULL,
+    primary key(ID)
+);
+CREATE TABLE categories(
+    cat_ID tinyint(3) NOT NULL,
+    name varchar(45) NOT NULL,
+    primary key(cat_ID)
+);
+CREATE TABLE companies(
+    comp_ID int NOT NULL,
+    name varchar(45) NOT NULL,
+    primary key(comp_ID)
+);
+CREATE TABLE company_ID(
+    ID varchar(45) NOT NULL,
+    comp_ID tinyint (3) NOT NULL,
+    primary key(ID),
+    foreign key(comp_ID) references companies(comp_ID)
+);
+CREATE TABLE country(
+    country_code char(2) NOT NULL,
+    country varchar(45) NOT NULL,
+    primary key(country_code)
+);
+CREATE TABLE desc(
+    ID varchar(45) NOT NULL,
+    desc text NOT NULL,
+    p_desc text,
+    s_desc text,
+    title text NN,
+    primary key(ID)
+);
+CREATE TABLE inactive_jobs(
+    ID varchar(45),
+    URL text,
+    last_update INT,
+    primary key(ID)
+);
+CREATE TABLE job_categories(
+    ID varchar(45) NOT NULL,
+    cat_ID tinyint(3) NOT NULL,
+    primary key(ID),
+    foreign key(cat_ID) references catagories(cat_ID)
+);
+CREATE TABLE location(
+    ID varchar(45) NOT NULL,
+    country_code char(2) NOT NULL,
+    state varchar(45),
+    county varchar(45),
+    town varchar(45),
+    type varchar(45),
+    primary key(ID),
+    foreign key(country_code) references country(country_code)
+);
+CREATE TABLE posting_date(
+    ID varchar(45) NOT NULL,
+    post_date int,
+    primary key (ID)
+);
